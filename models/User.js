@@ -20,9 +20,31 @@ const UserSchema = new Schema({
             message: 'Please enter a valid email!'
         }
     },
-    thoughts: [],
-    friends: []
-})
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+    ],
+    // not sure if this is correct for self-reference?
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
+},
+{
+    toJSON: {
+        virtuals: true
+    },
+    id: false
+});
+
+// virtual for friend count
+UserSchema.virtual('friendCount').get(function() {
+    return this.friends.length;
+});
 
 // create the user model using UserSchema
 const User = model('User', UserSchema);
