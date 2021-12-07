@@ -26,7 +26,6 @@ const UserSchema = new Schema({
             ref: 'Thought'
         }
     ],
-    // not sure if this is correct for self-reference?
     friends: [
         {
             type: Schema.Types.ObjectId,
