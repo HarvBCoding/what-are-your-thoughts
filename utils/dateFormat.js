@@ -40,6 +40,8 @@ module.exports = (timestamp) => {
 
     if (dateObj.getMinutes() < 10) {
         minutes = "0" + dateObj.getMinutes()
+    } else {
+        minutes = dateObj.getMinutes()
     }
 
     let periodOfDay;
