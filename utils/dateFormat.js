@@ -36,7 +36,11 @@ module.exports = (timestamp) => {
         hour = 12;
     }
 
-    const minutes = dateObj.getMinutes();
+    let minutes;
+
+    if (dateObj.getMinutes() < 10) {
+        minutes = "0" + dateObj.getMinutes()
+    }
 
     let periodOfDay;
 
